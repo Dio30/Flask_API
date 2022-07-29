@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" media="screen" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+    <center><h1>Bem vindo</h1></center>
+    <br>
+<center><form action="buscar" method="POST">
+    <p>Pesquise seu Pokemon:</p>
+    <input type="text" placeholder="Pesquisar" name="nome" autocomplete="on">
+    <button type="submit" name="buscar">Buscar</button>
+    <a href="http://127.0.0.1:5000/" class="btn-primary btn-sm">Voltar</a>
+    <br><br>
+    <p>ID: {{ id }}</p>
+    <p>Nome: {{ nome_pokemon }}</p>
+    <p>Natureza: {{ tipo }}</p>
+    <p>Abilidades: {{ abilidades }}</p>
+    <p>Foto:<img src="{{ foto }}"></p>
+</form></center>
+<hr>
+<center><form action="buscar_cep" method="POST">
+    <p>Pesquise seu CEP:</p>
+    <input type="text" placeholder="Digite seu CEP" name="cep" autocomplete="on">
+    <button type="submit">Buscar</button>
+    <a href="http://127.0.0.1:5000/" class="btn-primary btn-sm">Voltar</a>
+    <h3>O endereço fica na {{ endereco }}, no bairro {{ bairro }}, na cidade de {{ cidade }}-{{ estado }}</h3>
+</form></center>
+<hr>
+<center><form action="consultar_dolar" method="POST">
+    <h3>Clique aqui para saber quanto está o dólar atualmente</h3>
+    <button type="submit">Buscar</button>
+    <h4>O valor do {{ nome }} é de R$ {{ valor }}</h4>
+</form></center>
+<hr>
+<center><form action="consultar_euro" method="POST">
+    <h3>Clique aqui para saber quanto está o euro atualmente</h3>
+    <button type="submit">Buscar</button>
+    <h4>O valor do {{ nome_euro }} é de R$ {{ valor_euro }}</h4>
+</form></center>
+<hr>
+
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
