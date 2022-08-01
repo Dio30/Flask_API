@@ -11,10 +11,10 @@
 <body>
     <center><h1>Bem vindo</h1></center>
     <br>
-<center><form action="buscar" method="POST">
+<center><form action="buscar_pokemon" method="POST">
     <p>Pesquise seu Pokemon:</p>
     <input type="text" placeholder="Pesquisar" name="nome" autocomplete="on">
-    <button type="submit" name="buscar">Buscar</button>
+    <button type="submit" name="buscar_pokemon">Buscar</button>
     <a href="http://127.0.0.1:5000/" class="btn-primary btn-sm">Voltar</a>
     <br><br>
     <p>ID: {{ id }}</p>
@@ -29,21 +29,18 @@
     <input type="text" placeholder="Digite seu CEP" name="cep" autocomplete="on">
     <button type="submit">Buscar</button>
     <a href="http://127.0.0.1:5000/" class="btn-primary btn-sm">Voltar</a>
-    <h3>O endereço fica na {{ endereco }}, no bairro {{ bairro }}, na cidade de {{ cidade }}-{{ estado }}</h3>
+    <br><br>
+    <p>Endereço: {{ endereco }}</p>
+    <p>Bairro: {{ bairro }}</p>
+    <p>Cidade: {{ cidade }}</p>
+    <p>Estado: {{ estado }}</p>
 </form></center>
+
 <hr>
-<center><form action="consultar_dolar" method="POST">
-    <h3>Clique aqui para saber quanto está o dólar atualmente</h3>
-    <button type="submit">Buscar</button>
-    <h4>O valor do {{ nome }} é de R$ {{ valor }}</h4>
-</form></center>
-<hr>
-<center><form action="consultar_euro" method="POST">
-    <h3>Clique aqui para saber quanto está o euro atualmente</h3>
-    <button type="submit">Buscar</button>
-    <h4>O valor do {{ nome_euro }} é de R$ {{ valor_euro }}</h4>
-</form></center>
-<hr>
+<center>Para consulta clique aqui:<a href="http://127.0.0.1:5000/consultar_dolar" class="btn-primary btn-sm">Conversor de Moeda</a></center>
+<br>
+<center>Para saber a previsão do tempo clique aqui:<a href="http://127.0.0.1:5000/previsao_tempo" 
+class="btn-primary btn-sm">Previsão do Tempo</a></center>
 
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

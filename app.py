@@ -8,8 +8,8 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/buscar', methods= ['GET', 'POST'])
-def buscar():
+@app.route('/buscar_pokemon', methods= ['GET', 'POST'])
+def buscar_pokemon():
     pesquisar = request.form["nome"].lower()
     try:
         link = json.loads(requests.get(f'https://pokeapi.co/api/v2/pokemon/{pesquisar}').text)
@@ -42,6 +42,7 @@ def buscar_cep():
         bairro = resposta['district']
         estado = resposta['state']
         return render_template('index.html', cidade=cidade, endereco=endereco, bairro=bairro, estado=estado)
+    
     except:
         return render_template('index.html')
     
@@ -53,7 +54,7 @@ def consultar_dolar():
     resposta = requisicao.json()
     nome = resposta[moeda]['name']
     valor = float(resposta[moeda]['high']).__round__(2)
-    return render_template('index.html', nome=nome, valor=valor)
+    return render_template('conversor_moeda.html', nome=nome, valor=valor)
 
 @app.route('/consultar_euro', methods=['GET','POST'])
 def consultar_euro():
@@ -63,7 +64,25 @@ def consultar_euro():
     resposta = requisicao.json()
     nome_euro = resposta[moeda]['name']
     valor_euro = float(resposta[moeda]['high']).__round__(2)
-    return render_template('index.html', nome_euro=nome_euro, valor_euro=valor_euro)
+    return render_template('conversor_moeda.html', nome_euro=nome_euro, valor_euro=valor_euro)
+
+@app.route('/previsao_tempo', methods=['GET', 'POST'])
+def previsao_tempo():
+    API_key = 'd7c5eb336a9f9bea2f44c4e2cc117f48'
+    try:
+        cidade = request.form["cidade"].lower()
+        link = f'https://api.openweathermap.org/data/2.5/weather?q={cidade}&appid={API_key}&units=metric&lang=pt_br'
+        requisicao = requests.get(link)
+        resposta = requisicao.json()
+        tempo = float(resposta['main']['temp']).__round__()
+        maxima = float(resposta['main']['temp_max']).__round__(1)
+        minima = float(resposta['main']['temp_min']).__round__(1)
+        país = resposta['sys']['country']
+        nome = resposta['name']
+        descricao = resposta['weather'][0]['description']
+        return render_template('previsao_tempo.html', tempo=tempo, nome=nome, país=país, descricao=descricao, maxima=maxima, minima=minima)
+    except:
+        return render_template('previsao_tempo.html')
     
 if __name__ == '__main__':
     app.run(debug=True)
