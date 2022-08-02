@@ -1,3 +1,23 @@
 body{
-    background-color: #00bbff;
+    background-image: url('/static/imagens/wallpaper-pc1-scaled-1.webp');
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #0979ea;
+    display: flex;
+    flex-direction:column;
+    position: relative;
+    min-height: 100vh;
+    color: #000000;
+}
+
+.mycardheader{ /* para deixar os itens no card-header na cor definida */
+    background-color: #ababab;
+}
+
+.mybody{ /* para deixar os itens no card-body na cor definida */
+    background-color: #666666;
+    color: #000000;
+}
+h1, u{
+    color: #ffffff;
 }
