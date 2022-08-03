@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Moeda</title>
+    <link rel="stylesheet" media="screen" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+    <center><u><h3>Para consultar o dólar e o euro</h3></u></center>
+    <br>
+    <center><form action="consultar_dolar" method="POST">
+        <h3>Clique aqui para saber quanto está o dólar atualmente</h3>
+        <button type="submit">Buscar</button>
+        <a href="http://127.0.0.1:5000/" class="btn-primary btn-sm">Voltar</a>
+        <h4>O valor do {{ nome }} é de R$ {{ valor }}</h4>
+    </form></center>
+    <hr>
+    <center><form action="consultar_euro" method="POST">
+        <h3>Clique aqui para saber quanto está o euro atualmente</h3>
+        <button type="submit">Buscar</button>
+        <h4>O valor do {{ nome_euro }} é de R$ {{ valor_euro }}</h4>
+    </form></center>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

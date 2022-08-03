@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperatura Atual</title>
+    <link rel="stylesheet" media="screen" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/style.css">
+</head>
+<body>
+<div class="form-content my-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card shadow-lg border-1 rounded-lg mt-2">
+                    <div class="card-header justify-content-center mycardheader">
+                        <h4 class="font-weight-dark text-center">Temperatura Atual
+                        <a href="http://127.0.0.1:5000/" class="btn-dark btn-sm my_a" title="Voltar">&times;</a></h4>
+                        
+                    </div>
+                    <div class="card-body mybody">
+                        <form action="previsao_tempo" method="POST">
+                            <center><font size="6"><b>{{ nome }}-{{ país }}</b></font>
+                            <hr color="black">
+                            
+                            <img src="static/imagens/{{ imagem }}.png" title="{{ descricao }}" width="150px">
+                            <br>
+                            
+                            <font size="6"><b>{{ tempo }}°C / {{ descricao }}</b></font>
+                            <hr color="black">
+                            
+                            <b><font size="3">Min: {{ minima }}°C | Máx: {{ maxima }}°C | Umidade: {{ umidade }}%</b></font>
+                            <br><br>
+                            <center><b>{{ data_e_hora }}</b></center>
+                            <br>
+                            <input type="search" placeholder="Buscar cidade" name="cidade" autocomplete="on">
+                            <button type="submit" class="btn-info btn-sm">Buscar</button></center>
+                            <br>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

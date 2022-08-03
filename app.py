@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request
 import requests
 import json
+from datetime import datetime
+from pytz import timezone
+import locale
+
+locale.setlocale(locale.LC_ALL, '')
 
 app = Flask(__name__)
 
@@ -71,7 +76,7 @@ def previsao_tempo():
     API_key = 'd7c5eb336a9f9bea2f44c4e2cc117f48'
     try:
         cidade = request.form["cidade"].lower()
-        link = f'https://api.openweathermap.org/data/2.5/weather?q={cidade}&state=StateAbbr&appid={API_key}&units=metric&lang=pt_br'
+        link = f'https://api.openweathermap.org/data/2.5/weather?q={cidade}&appid={API_key}&units=metric&lang=pt_br'
         requisicao = requests.get(link)
         resposta = requisicao.json()
         tempo = float(resposta['main']['temp']).__round__()
@@ -82,22 +87,25 @@ def previsao_tempo():
         nome = resposta['name']
         descricao = resposta['weather'][0]['description']
         imagem = resposta['weather'][0]['icon']
+        data_e_hora_atuais = datetime.now()
+        fuso_horario = timezone('America/Sao_Paulo')
+        data_fuso = data_e_hora_atuais.astimezone(fuso_horario)
+        data_e_hora = data_fuso.strftime('%A - %d de %B de %Y').capitalize()
         return render_template('previsao_tempo.html', tempo=tempo, nome=nome, país=país, descricao=descricao, 
-        maxima=maxima, minima=minima, imagem=imagem, umidade=umidade)
+        maxima=maxima, minima=minima, imagem=imagem, umidade=umidade, data_e_hora=data_e_hora)
     except:
         return render_template('previsao_tempo.html')
     
 @app.route('/temperatura_atual', methods=['GET', 'POST'])
 def temperatura_atual():
-    API_key = '1eebd13659cca7d0201523e221f73769'
+    API_key ='69ff49bb1923631054fc3297f5f230df'
     try:
         cidade = request.form["temperatura"].lower()
         link = f'http://apiadvisor.climatempo.com.br/api/v1/locale/city?name={cidade}&token={API_key}'
         requisicao = requests.get(link)
         resposta = requisicao.json()
-        nome_cidade = resposta['name']
-        nome_estado = resposta['state']
-        return render_template('temperatura_atual.html', nome_cidade=nome_cidade, nome_estado=nome_estado)
+        nome = resposta['name']
+        return render_template('temperatura_atual.html', nome=nome)
     except:
         return render_template('temperatura_atual.html')
     

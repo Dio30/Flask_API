@@ -21,3 +21,13 @@ body{
 h1, u{
     color: #ffffff;
 }
+
+.my_a{
+    position: absolute;
+    right: 0;
+    margin-right: 6px;
+    padding-top: 0.5px;
+    padding-bottom: 0.5px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
